@@ -1,4 +1,4 @@
-/*C Program to perform Linear Search*/
+/*Linear Search*/
 #include<stdio.h>
 int linearsearch(int [], int, int);
 int main()
