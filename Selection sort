@@ -1,4 +1,4 @@
-/*C Program that implements Selection Sort */
+/*Selection Sort */
 #include<stdio.h>
 void selectionsort (int[], int);
 void main()
