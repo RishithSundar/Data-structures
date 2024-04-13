@@ -1,4 +1,4 @@
-/*C Program that implements Bubble sort */
+/*Bubble sort */
 #include<stdio.h>
 void bubblesort (int[], int);
 void main()
