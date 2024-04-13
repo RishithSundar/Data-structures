@@ -1,4 +1,4 @@
-/* Binary search using recursive function */
+/* Binary search */
 #include<stdio.h>
 int binarysearch(int*,int,int,int);
 int a[20], key;
