@@ -1,4 +1,4 @@
-/*C Program to perform Insertion Sort */
+/*Insertion Sort */
 #include<stdio.h>
 void insertionsort (int[], int);
 void main()
