@@ -1,12 +1,10 @@
 import java.util.*;
-
 public class BFTMatrix {
     static void bfs(int[][] graph, int start) {
         Queue<Integer> q = new LinkedList<>();
         boolean[] visited = new boolean[graph.length];
         q.add(start);
         visited[start] = true;
-
         while (!q.isEmpty()) {
             int node = q.poll();
             System.out.print(node + " ");
@@ -18,7 +16,6 @@ public class BFTMatrix {
             }
         }
     }
-
     public static void main(String[] args) {
         int[][] graph = {{0, 1, 1, 0},
                          {1, 0, 1, 1},
