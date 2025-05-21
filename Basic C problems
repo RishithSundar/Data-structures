@@ -1,0 +1,1104 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    // 1. Simple Interest
+    float p, r, t, si;
+    scanf("%f%f%f", &p, &r, &t);
+    si = (p * r * t) / 100;
+    printf("%f\n", si);
+
+    // 2. Multiply two Floating-Point Numbers
+    float a, b;
+    scanf("%f%f", &a, &b);
+    printf("%f\n", a * b);
+
+    // 3. Size of int, float, double, and char
+    printf("%zu %zu %zu %zu\n", sizeof(int), sizeof(float), sizeof(double), sizeof(char));
+
+    // 4. Leap Year
+    int year;
+    scanf("%d", &year);
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+        printf("Leap Year\n");
+    else
+        printf("Not a Leap Year\n");
+
+    // 5. Check Character Type
+    char c;
+    scanf(" %c", &c);
+    if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+        printf("Alphabet\n");
+    else if (c >= '0' && c <= '9')
+        printf("Digit\n");
+    else
+        printf("Special Character\n");
+
+    // 6. Uppercase or Lowercase
+    scanf(" %c", &c);
+    if (c >= 'A' && c <= 'Z')
+        printf("Uppercase\n");
+    else if (c >= 'a' && c <= 'z')
+        printf("Lowercase\n");
+
+    // 7. Triangle Validity and Type
+    int a1, b1, c1;
+    scanf("%d%d%d", &a1, &b1, &c1);
+    if (a1 + b1 > c1 && a1 + c1 > b1 && b1 + c1 > a1) {
+        printf("Valid Triangle\n");
+        if (a1 == b1 && b1 == c1)
+            printf("Equilateral\n");
+        else if (a1 == b1 || b1 == c1 || a1 == c1)
+            printf("Isosceles\n");
+        else
+            printf("Scalene\n");
+    } else {
+        printf("Invalid Triangle\n");
+    }
+
+    // 8. Days in Month
+    int month;
+    scanf("%d", &month);
+    if (month == 2)
+        printf("28 or 29 days\n");
+    else if (month == 4 || month == 6 || month == 9 || month == 11)
+        printf("30 days\n");
+    else
+        printf("31 days\n");
+
+    // 9. Quadrant of Coordinate Point
+    int x, y;
+    scanf("%d%d", &x, &y);
+    if (x > 0 && y > 0)
+        printf("Quadrant 1\n");
+    else if (x < 0 && y > 0)
+        printf("Quadrant 2\n");
+    else if (x < 0 && y < 0)
+        printf("Quadrant 3\n");
+    else if (x > 0 && y < 0)
+        printf("Quadrant 4\n");
+    else
+        printf("On Axis\n");
+
+    // 10. Gross Salary Calculation
+    float basic, hra, da, gross;
+    scanf("%f", &basic);
+    if (basic <= 10000) {
+        hra = basic * 0.2;
+        da = basic * 0.8;
+    } else if (basic <= 20000) {
+        hra = basic * 0.25;
+        da = basic * 0.9;
+    } else {
+        hra = basic * 0.3;
+        da = basic * 0.95;
+    }
+    gross = basic + hra + da;
+    printf("%f\n", gross);
+
+    // 11. Steel Grade
+    float hardness, carbon, tensile;
+    scanf("%f%f%f", &hardness, &carbon, &tensile);
+    if (hardness > 50 && carbon < 0.7 && tensile > 500)
+        printf("Grade 10\n");
+    else if (hardness > 50 && carbon < 0.7)
+        printf("Grade 9\n");
+    else if (carbon < 0.7 && tensile > 500)
+        printf("Grade 8\n");
+    else if (hardness > 50 && tensile > 500)
+        printf("Grade 7\n");
+    else if (hardness > 50 || carbon < 0.7 || tensile > 500)
+        printf("Grade 6\n");
+    else
+        printf("Grade 5\n");
+
+    // 12. Library Fine
+    int days;
+    scanf("%d", &days);
+    if (days <= 5)
+        printf("Fine: 0.5 * %d\n", days);
+    else if (days <= 10)
+        printf("Fine: %d\n", days);
+    else if (days <= 30)
+        printf("Fine: 5\n");
+    else
+        printf("Membership Cancelled\n");
+
+    // 13. Festival Discounts
+    float cost;
+    scanf("%f", &cost);
+    if (cost <= 2000)
+        printf("%f\n", cost * 0.95);
+    else if (cost <= 5000)
+        printf("%f\n", cost * 0.90);
+    else if (cost <= 10000)
+        printf("%f\n", cost * 0.65);
+    else
+        printf("%f\n", cost * 0.50);
+
+    // 14. Employee Loan
+    char category;
+    scanf(" %c", &category);
+    if (category == 'P')
+        printf("25000\n");
+    else
+        printf("20000\n");
+
+    // 15. College Admission
+    int maths, physics, chemistry;
+    scanf("%d%d%d", &maths, &physics, &chemistry);
+    float percentage = (maths + physics + chemistry) / 3.0;
+    if (maths >= 80 && physics >= 75 && chemistry >= 70 && percentage >= 80)
+        printf("Eligible\n");
+    else
+        printf("Not Eligible\n");
+
+    // 16. Telephone Bill
+    int calls;
+    scanf("%d", &calls);
+    float bill = 250;
+    if (calls > 150) {
+        bill += 0.80 * (calls > 350 ? 200 : calls - 150);
+        if (calls > 350) {
+            bill += 1.00 * (calls > 850 ? 500 : calls - 350);
+            if (calls > 850) {
+                bill += 1.20 * (calls > 1050 ? 200 : calls - 850);
+                bill += 1.50 * (calls - 1050);
+            }
+        }
+    }
+    printf("%f\n", bill);
+
+    // 17. Area Calculation Menu
+    int choice;
+    float radius, length, width, base, height;
+    do {
+        printf("1. Circle\n2. Rectangle\n3. Triangle\n4. Exit\n");
+        scanf("%d", &choice);
+        switch (choice) {
+            case 1:
+                scanf("%f", &radius);
+                printf("%f\n", 3.14 * radius * radius);
+                break;
+            case 2:
+                scanf("%f%f", &length, &width);
+                printf("%f\n", length * width);
+                break;
+            case 3:
+                scanf("%f%f", &base, &height);
+                printf("%f\n", 0.5 * base * height);
+                break;
+        }
+    } while (choice != 4);
+
+    // 18. Menu Driven Program for Various Operations
+    do {
+        printf("1. Swap\n2. Area of Triangle\n3. Positive/Negative\n4. Exit\n");
+        scanf("%d", &choice);
+        switch (choice) {
+            case 1:
+                int x1, x2, temp;
+                scanf("%d%d", &x1, &x2);
+                temp = x1;
+                x1 = x2;
+                x2 = temp;
+                printf("%d %d\n", x1, x2);
+                break;
+            case 2:
+                scanf("%f%f", &base, &height);
+                printf("%f\n", 0.5 * base * height);
+                break;
+            case 3:
+                int num;
+                scanf("%d", &num);
+                printf("%s\n", (num >= 0) ? "Positive" : "Negative");
+                break;
+        }
+    } while (choice != 4);
+
+    // 19. Integer to String Conversion
+    int num;
+    scanf("%d", &num);
+    switch (num) {
+        case 0: printf("ZERO\n"); break;
+        case 1: printf("ONE\n"); break;
+        case 2: printf("TWO\n"); break;
+        case 3: printf("THREE\n"); break;
+        case 4: printf("FOUR\n"); break;
+        case 5: printf("FIVE\n"); break;
+        case 6: printf("SIX\n"); break;
+        case 7: printf("SEVEN\n"); break;
+        case 8: printf("EIGHT\n"); break;
+        case 9: printf("NINE\n"); break;
+    }
+
+    // 20. Vowel or Consonant
+    scanf(" %c", &c);
+    switch (c) {
+        case 'a': case 'e': case 'i': case 'o': case 'u':
+        case 'A': case 'E': case 'I': case 'O': case 'U':
+            printf("Vowel\n");
+            break;
+        case 'z': case 'Z':
+            printf("Last Alphabet\n");
+            break;
+        default:
+            printf("Consonant\n");
+    }
+
+    // 21. Arithmetic Calculator
+    do {
+        printf("1. Add\n2. Subtract\n3. Multiply\n4. Divide\n5. Exit\n");
+        scanf("%d", &choice);
+        float num1, num2;
+        if (choice >= 1 && choice <= 4) {
+            scanf("%f%f", &num1, &num2);
+            switch (choice) {
+                case 1: printf("%f\n", num1 + num2); break;
+                case 2: printf("%f\n", num1 - num2); break;
+                case 3: printf("%f\n", num1 * num2); break;
+                case 4: printf("%f\n", num1 / num2); break;
+            }
+        }
+    } while (choice != 5);
+
+    // 22. Factorial, Prime, Odd/Even Menu
+    do {
+        printf("1. Factorial\n2. Prime\n3. Odd/Even\n4. Exit\n");
+        scanf("%d", &choice);
+        switch (choice) {
+            case 1:
+                int n, fact = 1;
+                scanf("%d", &n);
+                for (int i = 1; i <= n; i++)
+                    fact *= i;
+                printf("%d\n", fact);
+                break;
+            case 2:
+                scanf("%d", &n);
+                int isPrime = 1;
+                for (int i = 2; i <= sqrt(n); i++)
+                    if (n % i == 0) {
+                        isPrime = 0;
+                        break;
+                    }
+                printf("%s\n", isPrime ? "Prime" : "Not Prime");
+                break;
+            case 3:
+                scanf("%d", &n);
+                printf("%s\n", (n % 2 == 0) ? "Even" : "Odd");
+                break;
+        }
+    } while (choice != 4);
+
+    // 23. Decimal to Binary
+    int n;
+    scanf("%d", &n);
+    int binary[32], i = 0;
+    while (n > 0) {
+        binary[i++] = n % 2;
+        n /= 2;
+    }
+    for (int j = i - 1; j >= 0; j--)
+        printf("%d", binary[j]);
+    printf("\n");
+
+    // 24. Strong Number
+    scanf("%d", &n);
+    int sum = 0, temp = n;
+    while (temp > 0) {
+        int digit = temp % 10, fact = 1;
+        for (int i = 1; i <= digit; i++)
+            fact *= i;
+        sum += fact;
+        temp /= 10;
+    }
+    printf("%s\n", (sum == n) ? "Strong Number" : "Not Strong Number");
+
+    // 25. Prime Numbers from n
+    scanf("%d", &n);
+    for (int count = 0; count < n; n++) {
+        int isPrime = 1;
+        for (int i = 2; i <= sqrt(n); i++)
+            if (n % i == 0) {
+                isPrime = 0;
+                break;
+            }
+        if (isPrime && n > 1) {
+            printf("%d ", n);
+            count++;
+        }
+    }
+    printf("\n");
+
+    // 26. Test Cases for Prime Number
+    // This is a conceptual question, no code needed.
+
+    // 27. Reverse a Number
+    scanf("%d", &n);
+    int reversed = 0;
+    while (n > 0) {
+        reversed = reversed * 10 + n % 10;
+        n /= 10;
+    }
+    printf("%d\n", reversed);
+
+    // 28. Print Numbers from 1 to N
+    scanf("%d", &n);
+    for (int i = 1; i <= n; i++)
+        printf("%d ", i);
+    printf("\n");
+
+    // 29. Square, Cube, and Square Root
+    scanf("%d", &n);
+    printf("Square: %d, Cube: %d, Square Root: %f\n", n * n, n * n * n, sqrt(n));
+
+    // 30. Find Factors of a Number
+    scanf("%d", &n);
+    for (int i = 1; i <= n; i++)
+        if (n % i == 0)
+            printf("%d ", i);
+    printf("\n");
+
+    // 31. Armstrong Numbers between 1 and 500
+    for (int num = 1; num <= 500; num++) {
+        int sum = 0, temp = num;
+        while (temp > 0) {
+            int digit = temp % 10;
+            sum += digit * digit * digit;
+            temp /= 10;
+        }
+        if (sum == num)
+            printf("%d ", num);
+    }
+    printf("\n");
+
+    // 32. Perfect Number
+    scanf("%d", &n);
+    int sumDivisors = 0;
+    for (int i = 1; i < n; i++)
+        if (n % i == 0)
+            sumDivisors += i;
+    printf("%s\n", (sumDivisors == n) ? "Perfect Number" : "Not Perfect Number");
+
+    // 33. Sum of Even and Odd Numbers
+    int evenSum = 0, oddSum = 0;
+    for (int i = 1; i <= n; i++) {
+        if (i % 2 == 0)
+            evenSum += i;
+        else
+            oddSum += i;
+    }
+    printf("Even Sum: %d, Odd Sum: %d\n", evenSum, oddSum);
+
+    // 34. Fibonacci Series up to n terms
+    int a = 0, b = 1, next;
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) {
+        printf("%d ", a);
+        next = a + b;
+        a = b;
+        b = next;
+    }
+    printf("\n");
+
+    // 35. Factorial of a Number
+    scanf("%d", &n);
+    fact = 1;
+    for (int i = 1; i <= n; i++)
+        fact *= i;
+    printf("%d\n", fact);
+
+    // 36. Number of Digits and Sum of Digits
+    scanf("%d", &n);
+    int digitCount = 0, digitSum = 0;
+    while (n > 0) {
+        digitSum += n % 10;
+        digitCount++;
+        n /= 10;
+    }
+    printf("Digits: %d, Sum: %d\n", digitCount, digitSum);
+
+    // 37. Sum of Every Third Integer
+    int sumThird = 0;
+    // (i) Using do-while
+    int i = 2;
+    do {
+        sumThird += i;
+        i += 3;
+    } while (i < 100);
+    printf("Sum using do-while: %d\n", sumThird);
+
+    // (ii) Using for
+    sumThird = 0;
+    for (i = 2; i < 100; i += 3)
+        sumThird += i;
+    printf("Sum using for: %d\n", sumThird);
+
+    // 38. Print Even Numbers up to N
+    scanf("%d", &n);
+    for (int i = 2; i <= n; i += 2)
+        printf("%d ", i);
+    printf("\n");
+
+    // 39. Sum of Series 1 - 3 + 5 - 7 + ...
+    scanf("%d", &n);
+    int seriesSum = 0;
+    for (int i = 1; i <= n; i++) {
+        seriesSum += (i % 2 == 0) ? -i : i;
+    }
+    printf("%d\n", seriesSum);
+
+    // 40. Nth Term of Sequence
+    scanf("%d", &n);
+    printf("%d\n", (int)pow(10, n - 1));
+
+    // 41. Sum of Series 1 + 1/x + 1/x^2 + ...
+    scanf("%d", &n);
+    float x;
+    scanf("%f", &x);
+    float seriesSum = 1;
+    for (int i = 1; i <= n; i++)
+        seriesSum += 1 / pow(x, i);
+    printf("%f\n", seriesSum);
+
+    // 42. Cube of Numbers up to N
+    scanf("%d", &n);
+    for (int i = 1; i <= n; i++)
+        printf("%d ", i * i * i);
+    printf("\n");
+
+       // 43. Pyramid Pattern
+    scanf("%d", &n);
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++)
+            printf("%d", j);
+        printf("\n");
+    }
+
+    // 44. Star Pattern
+    scanf("%d", &n);
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= i; j++)
+            printf("*");
+        printf("\n");
+    }
+
+    // 45. Floyd's Triangle
+    int count = 1;
+    scanf("%d", &n);
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= i; j++) {
+            printf("%d ", count);
+            count++;
+        }
+        printf("\n");
+    }
+
+    // 46. Indentation and Comments
+    // This is a conceptual question, no code needed.
+
+    // 47. Pyramid Pattern
+    scanf("%d", &n);
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= 2 * n - 1; j++) {
+            if (j >= n - i + 1 && j <= n + i - 1)
+                printf("*");
+            else
+                printf(" ");
+        }
+        printf("\n");
+    }
+
+    // 48. Number Pattern
+    for (int i = 1; i <= 5; i++) {
+        for (int j = 1; j <= i; j++)
+            printf("%d ", i);
+        printf("\n");
+    }
+
+    // 49. Right Angle Triangle with Numbers
+    scanf("%d", &n);
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= i; j++)
+            printf("%d ", j);
+        printf("\n");
+    }
+
+    // 50. Pyramid Pattern with Letters
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n - i - 1; j++)
+            printf(" ");
+        for (int j = 0; j < 2 * i + 1; j++)
+            printf("%c", 'A' + j);
+        printf("\n");
+    }
+
+    // 51. Pyramid Pattern with Letters
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n - i - 1; j++)
+            printf(" ");
+        for (int j = 0; j <= i; j++)
+            printf("%c ", 'A' + j);
+        for (int j = i - 1; j >= 0; j--)
+            printf("%c ", 'A' + j);
+        printf("\n");
+    }
+
+    // 52. Sum of Series
+    scanf("%d", &n);
+    float x;
+    scanf("%f", &x);
+    float sum = 1.0;
+    for (int i = 1; i <= n; i++) {
+        float term = pow(x, i) / tgamma(i + 1);
+        sum += term;
+    }
+    printf("%f\n", sum);
+
+    // 53. Inverted Pyramid Pattern
+    scanf("%d", &n);
+    for (int i = n; i >= 1; i--) {
+        for (int j = 1; j <= i; j++)
+            printf("* ");
+        printf("\n");
+    }
+
+    // 54. Sum of Series
+    int sumSeries = 0, term = 9;
+    scanf("%d", &n);
+    for (int i = 1; i <= n; i++) {
+        sumSeries += term;
+        term = term * 10 + 9;
+    }
+    printf("%d\n", sumSeries);
+
+    // 55. Number Pattern
+    for (int i = 1; i <= 5; i++) {
+        for (int j = 1; j <= i; j++)
+            printf("%d ", i + j - 1);
+        for (int j = i - 1; j >= 1; j--)
+            printf("%d ", i + j - 1);
+        printf("\n");
+    }
+
+    // 56. Exchange Values of Two Variables
+    int a1, a2;
+    scanf("%d%d", &a1, &a2);
+    a1 = a1 + a2;
+    a2 = a1 - a2;
+    a1 = a1 - a2;
+    printf("%d %d\n", a1, a2);
+
+    // 57. Reverse Number and Check Palindrome
+    scanf("%d", &n);
+    int original = n, reversedNum = 0;
+    while (n > 0) {
+        reversedNum = reversedNum * 10 + n % 10;
+        n /= 10;
+    }
+    printf("%s\n", (original == reversedNum) ? "Palindrome" : "Not Palindrome");
+
+    // 58. Convert Lowercase to Uppercase
+    scanf(" %c", &c);
+    printf("%c\n", (c >= 'a' && c <= 'z') ? c - 32 : c);
+
+    // 59. Average of n Numbers
+    int count;
+    scanf("%d", &count);
+    float sumNumbers = 0;
+    for (int i = 0; i < count; i++) {
+        float num;
+        scanf("%f", &num);
+        sumNumbers += num;
+    }
+    printf("%f\n", sumNumbers / count);
+
+    // 60. Binary Search
+    int arr[100], size, key;
+    scanf("%d", &size);
+    for (int i = 0; i < size; i++)
+        scanf("%d", &arr[i]);
+    scanf("%d", &key);
+    int left = 0, right = size - 1, found = 0;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (arr[mid] == key) {
+            found = 1;
+            break;
+        } else if (arr[mid] < key)
+            left = mid + 1;
+        else
+            right = mid - 1;
+    }
+    printf("%s\n", found ? "Found" : "Not Found");
+
+    // 61. Simple Calculator
+    do {
+        printf("1. Add\n2. Subtract\n3. Multiply\n4. Divide\n5. Exit\n");
+        scanf("%d", &choice);
+        float num1, num2;
+        if (choice >= 1 && choice <= 4) {
+            scanf("%f%f", &num1, &num2);
+            switch (choice) {
+                case 1: printf("%f\n", num1 + num2); break;
+                case 2: printf("%f\n", num1 - num2); break;
+                case 3: printf("%f\n", num1 * num2); break;
+                case 4: printf("%f\n", num1 / num2); break;
+            }
+        }
+    } while (choice != 5);
+
+    // 62. Perfect Numbers in Given Range
+    int lower, upper;
+    scanf("%d%d", &lower, &upper);
+    for (int num = lower; num <= upper; num++) {
+        int sumDivisors = 0;
+        for (int i = 1; i < num; i++)
+            if (num % i == 0)
+                sumDivisors += i;
+        if (sumDivisors == num)
+            printf("%d ", num);
+    }
+    printf("\n");
+
+    // 63. Prime Number Function
+    int isPrime(int num) {
+        if (num <= 1) return 0;
+        for (int i = 2; i <= sqrt(num); i++)
+            if (num % i == 0) return 0;
+        return 1;
+    }
+    for (int i = 1; i <= 100; i++)
+        if (isPrime(i))
+            printf("%d ", i);
+    printf("\n");
+
+    // 64. Single Digit or More Digit
+    scanf("%d", &n);
+    printf("%s\n", (n < 10) ? "Single Digit" : "More than One Digit");
+
+    // 65. Sum of Squares of Odd Numbers
+    int sumOddSquares = 0;
+    for (int i = 1; i <= 50; i += 2)
+        sumOddSquares += i * i;
+    printf("%d\n", sumOddSquares);
+
+    // 66. HCF of Two Numbers
+    int a, b;
+    scanf("%d%d", &a, &b);
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    printf("%d\n", a);
+
+    // 67. Youngest Among Three
+    int age1, age2, age3;
+    scanf("%d%d%d", &age1, &age2, &age3);
+    int youngest = (age1 < age2) ? (age1 < age3 ? age1 : age3) : (age2 < age3 ? age2 : age3);
+    printf("%d\n", youngest);
+
+    // 68. Product of Digits
+    int prodDigits(int num) {
+        int product = 1;
+        while (num > 0) {
+            product *= num % 10;
+            num /= 10;
+        }
+        return product;
+    }
+    scanf("%d", &n);
+    printf("%d\n", prodDigits(n));
+
+    // 69. Factors of a Given Integer
+    scanf("%d", &n);
+    for (int i = 1; i <= n; i++)
+        if (n % i == 0)
+            printf("%d ", i);
+    printf("\n");
+
+    // 70. Greatest of Three Numbers
+    scanf("%d%d%d", &a, &b, &c);
+    int greatest = (a > b) ? (a > c ? a : c) : (b > c ? b : c);
+    printf("%d\n", greatest);
+
+    // 71. Recursive Factorial
+    int factorial(int num) {
+        return (num == 0) ? 1 : num * factorial(num - 1);
+    }
+    scanf("%d", &n);
+    printf("%d\n", factorial(n));
+
+    // 72. Decimal to Binary Function
+    void decimalToBinary(int num) {
+        if (num > 1)
+            decimalToBinary(num / 2);
+        printf("%d", num % 2);
+    }
+    scanf("%d", &n);
+    decimalToBinary(n);
+    printf("\n");
+
+    // 73. Reverse Integer and Sum of Digits
+    void reverseAndSum(int num) {
+        int reversed = 0, sum = 0;
+        while (num > 0) {
+            int digit = num % 10;
+            reversed = reversed * 10 + digit;
+            sum += digit;
+            num /= 10;
+        }
+        printf("%d %d\n", reversed, sum);
+    }
+    scanf("%d", &n);
+    reverseAndSum(n);
+
+    // 74. Recursive Sum of Digits
+    int sumOfDigits(int num) {
+        return (num == 0) ? 0 : (num % 10 + sumOfDigits(num / 10));
+    }
+    scanf("%d", &n);
+    printf("%d\n", sumOfDigits(n));
+
+    // 75. Recursive Fibonacci Series
+    void printFibonacci(int n) {
+        static int a = 0, b = 1;
+        if (n > 0) {
+            printf("%d ", a);
+            int next = a + b;
+            a = b;
+            b = next;
+            printFibonacci(n - 1);
+        }
+    }
+    scanf("%d", &n);
+    printFibonacci(n);
+    printf("\n");
+
+    // 76. Sum of Digits Using Recursion
+    scanf("%d", &n);
+    printf("%d\n", sumOfDigits(n));
+
+    // 77. Reverse a Number Using Recursion
+    int reverseNumber(int num) {
+        static int reversed = 0;
+        if (num > 0) {
+            reversed = reversed * 10 + num % 10;
+            reverseNumber(num / 10);
+        }
+        return reversed;
+    }
+    scanf("%d", &n);
+    printf("%d\n", reverseNumber(n));
+
+    // 78. Sum of First N Natural Numbers Using Recursion
+    int sumNatural(int num) {
+        return (num == 0) ? 0 : num + sumNatural(num - 1);
+    }
+    scanf("%d", &n);
+    printf("%d\n", sumNatural(n));
+
+    // 79. GCD Using Recursion
+    int gcd(int a, int b) {
+        return (b == 0) ? a : gcd(b, a % b);
+    }
+    scanf("%d%d", &a, &b);
+    printf("%d\n", gcd(a, b));
+
+    // 80. Binary Search Using Recursion
+    int binarySearch(int arr[], int left, int right, int key) {
+        if (right >= left) {
+            int mid = left + (right - left) / 2;
+            if (arr[mid] == key)
+                return mid;
+            if (arr[mid] > key)
+                return binarySearch(arr, left, mid - 1, key);
+            return binarySearch(arr, mid + 1, right, key);
+        }
+        return -1;
+    }
+    scanf("%d", &size);
+    for (int i = 0; i < size; i++)
+        scanf("%d", &arr[i]);
+    scanf("%d", &key);
+    int result = binarySearch(arr, 0, size - 1, key);
+    printf("%s\n", (result != -1) ? "Found" : "Not Found");
+
+    // 81. Power of a Number Using Recursion
+    int power(int a, int n) {
+        return (n == 0) ? 1 : a * power(a, n - 1);
+    }
+    scanf("%d%d", &a, &n);
+    printf("%d\n", power(a, n));
+
+    // 82. Sum of 1-D Array Elements
+    scanf("%d", &size);
+    int arr1[100];
+    for (int i = 0; i < size; i++)
+        scanf("%d", &arr1[i]);
+    int sumArray = 0;
+    for (int i = 0; i < size; i++)
+        sumArray += arr1[i];
+    printf("%d\n", sumArray);
+
+    // 83. Sum and Average of 10 Real Numbers
+    float arr2[10], sumReal = 0;
+    for (int i = 0; i < 10; i++) {
+        scanf("%f", &arr2[i]);
+        sumReal += arr2[i];
+    }
+    printf("Sum: %f, Average: %f\n", sumReal, sumReal / 10);
+
+    // 84. Sort Array in Descending Order (Bubble Sort)
+    for (int i = 0; i < size - 1; i++)
+        for (int j = 0; j < size - i - 1; j++)
+            if (arr1[j] < arr1[j + 1]) {
+                int temp = arr1[j];
+                arr1[j] = arr1[j + 1];
+                arr1[j + 1] = temp;
+            }
+    for (int i = 0; i < size; i++)
+        printf("%d ", arr1[i]);
+    printf("\n");
+
+    // 85. Sort Array in Ascending Order (Bubble Sort)
+    for (int i = 0; i < size - 1; i++)
+        for (int j = 0; j < size - i - 1; j++)
+            if (arr1[j] > arr1[j + 1]) {
+                int temp = arr1[j];
+                arr1[j] = arr1[j + 1];
+                arr1[j + 1] = temp;
+            }
+    for (int i = 0; i < size; i++)
+        printf("%d ", arr1[i]);
+    printf("\n");
+
+    // 86. Sum and Average of Array Elements
+    scanf("%d", &size);
+    float arr3[100];
+    float sumAvg = 0;
+    for (int i = 0; i < size; i++) {
+        scanf("%f", &arr3[i]);
+        sumAvg += arr3[i];
+    }
+    printf("Sum: %f, Average: %f\n", sumAvg, sumAvg / size);
+
+    // 87. Insert Element in Array at Specified Position
+    int pos, element;
+    scanf("%d%d%d", &size, &pos, &element);
+    for (int i = size; i > pos; i--)
+        arr1[i] = arr1[i - 1];
+    arr1[pos] = element;
+    size++;
+    for (int i = 0; i < size; i++)
+        printf("%d ", arr1[i]);
+    printf("\n");
+
+    // 88. Largest and Smallest Element in Array
+    int largest = arr1[0], smallest = arr1[0];
+    for (int i = 1; i < size; i++) {
+        if (arr1[i] > largest)
+            largest = arr1[i];
+        if (arr1[i] < smallest)
+            smallest = arr1[i];
+    }
+    printf("Largest: %d, Smallest: %d\n", largest, smallest);
+
+    // 89. Second Largest Element in Array
+    int secondLargest = -1;
+    largest = arr1[0];
+    for (int i = 1; i < size; i++) {
+        if (arr1[i] > largest) {
+            secondLargest = largest;
+            largest = arr1[i];
+        } else if (arr1[i] > secondLargest && arr1[i] < largest) {
+            secondLargest = arr1[i];
+        }
+    }
+    printf("Second Largest: %d\n", secondLargest);
+
+    // 90. Sum of All Elements in Array
+    sumArray = 0;
+    for (int i = 0; i < size; i++)
+        sumArray += arr1[i];
+    printf("%d\n", sumArray);
+
+      // 91. Linear Search in Array
+    int searchKey;
+    scanf("%d", &searchKey);
+    int foundIndex = -1;
+    for (int i = 0; i < size; i++) {
+        if (arr1[i] == searchKey) {
+            foundIndex = i;
+            break;
+        }
+    }
+    printf("%s\n", (foundIndex != -1) ? "Found" : "Not Found");
+
+    // 92. Binary Search in Array
+    scanf("%d", &searchKey);
+    int resultIndex = binarySearch(arr1, 0, size - 1, searchKey);
+    printf("%s\n", (resultIndex != -1) ? "Found" : "Not Found");
+
+    // 93. Check Whether Two Matrices Are Equal
+    int matrix1[10][10], matrix2[10][10], rows, cols;
+    scanf("%d%d", &rows, &cols);
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < cols; j++)
+            scanf("%d", &matrix1[i][j]);
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < cols; j++)
+            scanf("%d", &matrix2[i][j]);
+    int equal = 1;
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < cols; j++)
+            if (matrix1[i][j] != matrix2[i][j]) {
+                equal = 0;
+                break;
+            }
+    printf("%s\n", equal ? "Matrices are Equal" : "Matrices are Not Equal");
+
+    // 94. Sum of Rows in a 3x3 Matrix
+    int matrix3[3][3];
+    for (int i = 0; i < 3; i++)
+        for (int j = 0; j < 3; j++)
+            scanf("%d", &matrix3[i][j]);
+    for (int i = 0; i < 3; i++) {
+        int rowSum = 0;
+        for (int j = 0; j < 3; j++)
+            rowSum += matrix3[i][j];
+        printf("Sum of row %d: %d\n", i + 1, rowSum);
+    }
+
+    // 95. Multiply Two 4x4 Matrices
+    int matrix4[4][4], matrix5[4][4], result[4][4] = {0};
+    for (int i = 0; i < 4; i++)
+        for (int j = 0; j < 4; j++)
+            scanf("%d", &matrix4[i][j]);
+    for (int i = 0; i < 4; i++)
+        for (int j = 0; j < 4; j++)
+            scanf("%d", &matrix5[i][j]);
+    for (int i = 0; i < 4; i++)
+        for (int j = 0; j < 4; j++)
+            for (int k = 0; k < 4; k++)
+                result[i][j] += matrix4[i][k] * matrix5[k][j];
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++)
+            printf("%d ", result[i][j]);
+        printf("\n");
+    }
+
+    // 96. Multiply Two Matrices of Different Order
+    int rows1, cols1, rows2, cols2;
+    scanf("%d%d", &rows1, &cols1);
+    int matrix6[10][10];
+    for (int i = 0; i < rows1; i++)
+        for (int j = 0; j < cols1; j++)
+            scanf("%d", &matrix6[i][j]);
+    scanf("%d%d", &rows2, &cols2);
+    int matrix7[10][10];
+    for (int i = 0; i < rows2; i++)
+        for (int j = 0; j < cols2; j++)
+            scanf("%d", &matrix7[i][j]);
+    if (cols1 != rows2) {
+        printf("Matrix multiplication not possible\n");
+    } else {
+        int resultMatrix[10][10] = {0};
+        for (int i = 0; i < rows1; i++)
+            for (int j = 0; j < cols2; j++)
+                for (int k = 0; k < cols1; k++)
+                    resultMatrix[i][j] += matrix6[i][k] * matrix7[k][j];
+        for (int i = 0; i < rows1; i++) {
+            for (int j = 0; j < cols2; j++)
+                printf("%d ", resultMatrix[i][j]);
+            printf("\n");
+        }
+    }
+
+    // 97. Sum of Diagonal Elements of a Matrix
+    int matrix8[10][10], size;
+    scanf("%d", &size);
+    for (int i = 0; i < size; i++)
+        for (int j = 0; j < size; j++)
+            scanf("%d", &matrix8[i][j]);
+    int diagonalSum = 0;
+    for (int i = 0; i < size; i++)
+        diagonalSum += matrix8[i][i];
+    printf("Sum of diagonal elements: %d\n", diagonalSum);
+
+    // 98. Convert Matrix to Upper and Lower Triangular
+    int matrix9[10][10];
+    scanf("%d", &size);
+    for (int i = 0; i < size; i++)
+        for (int j = 0; j < size; j++)
+            scanf("%d", &matrix9[i][j]);
+    printf("Upper Triangular:\n");
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            if (j < i)
+                printf("0 ");
+            else
+                printf("%d ", matrix9[i][j]);
+        }
+        printf("\n");
+    }
+    printf("Lower Triangular:\n");
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            if (j > i)
+                printf("0 ");
+            else
+                printf("%d ", matrix9[i][j]);
+        }
+        printf("\n");
+    }
+
+    // 99. Check if Matrix is Sparse
+    int matrix10[10][10], sparse = 1;
+    scanf("%d%d", &rows, &cols);
+    int zeroCount = 0, totalCount = rows * cols;
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < cols; j++) {
+            scanf("%d", &matrix10[i][j]);
+            if (matrix10[i][j] == 0)
+                zeroCount++;
+        }
+    if (zeroCount <= totalCount / 2)
+        sparse = 0;
+    printf("%s\n", sparse ? "Sparse Matrix" : "Not Sparse Matrix");
+
+    // 100. Check if Matrix is Magic Square
+    int matrix11[10][10], magicSum = 0;
+    scanf("%d", &size);
+    for (int i = 0; i < size; i++)
+        for (int j = 0; j < size; j++)
+            scanf("%d", &matrix11[i][j]);
+    for (int i = 0; i < size; i++)
+        magicSum += matrix11[0][i];
+    int isMagic = 1;
+    for (int i = 0; i < size; i++) {
+        int rowSum = 0, colSum = 0;
+        for (int j = 0; j < size; j++) {
+            rowSum += matrix11[i][j];
+            colSum += matrix11[j][i];
+        }
+        if (rowSum != magicSum || colSum != magicSum) {
+            isMagic = 0;
+            break;
+        }
+    }
+    int diagSum1 = 0, diagSum2 = 0;
+    for (int i = 0; i < size; i++) {
+        diagSum1 += matrix11[i][i];
+        diagSum2 += matrix11[i][size - i - 1];
+    }
+    if (diagSum1 != magicSum || diagSum2 != magicSum)
+        isMagic = 0;
+    printf("%s\n", isMagic ? "Magic Square" : "Not Magic Square");
+
+    return 0;
+}
